@@ -48,5 +48,14 @@ export default {
       },
     },
   },
-  plugins: [],
-};
+  plugins: [
+    // Générer les classes utilitaires personnalisées pour bg/text/border
+    function({ addUtilities, theme }) {
+      addUtilities({
+        ".bg-background": { backgroundColor: theme("colors.background") },
+        ".text-foreground": { color: theme("colors.foreground") },
+        ".border-border": { borderColor: theme("colors.border") },
+      });
+    }
+  ],
+}

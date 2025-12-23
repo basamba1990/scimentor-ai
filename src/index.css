@@ -50,12 +50,11 @@
   }
 }
 
-/* ✅ Remplacer border-border par CSS direct */
+/* Utilisation des classes générées par Tailwind plugin */
 @layer base {
   * {
-    border: 1px solid hsl(var(--border));
+    @apply border-border;
   }
-
   body {
     @apply bg-background text-foreground;
   }
