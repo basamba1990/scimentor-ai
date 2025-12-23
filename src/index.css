@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Définition des variables CSS pour les couleurs et radius */
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -49,11 +50,14 @@
   }
 }
 
+/* Base global avec Tailwind */
 @layer base {
   * {
-    @apply border-border;
+    @apply border; /* applique la bordure Tailwind standard */
+    border-color: hsl(var(--border)); /* couleur via variable CSS */
   }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground; /* couleurs via variables */
   }
 }
