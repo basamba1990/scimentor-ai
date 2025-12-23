@@ -50,14 +50,13 @@
   }
 }
 
-/* Base global avec Tailwind */
+/* ✅ Remplacer border-border par CSS direct */
 @layer base {
   * {
-    @apply border; /* largeur et style de bordure */
-    border-color: hsl(var(--border)); /* couleur via variable CSS */
+    border: 1px solid hsl(var(--border));
   }
 
   body {
-    @apply bg-background text-foreground; /* couleurs via variables */
+    @apply bg-background text-foreground;
   }
 }
