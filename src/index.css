@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Définition des variables CSS pour les couleurs et radius */
+/* Définition des variables CSS pour thème clair/sombre */
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -53,7 +53,7 @@
 /* Base global avec Tailwind */
 @layer base {
   * {
-    @apply border; /* applique la bordure Tailwind standard */
+    @apply border; /* largeur et style de bordure */
     border-color: hsl(var(--border)); /* couleur via variable CSS */
   }
 
