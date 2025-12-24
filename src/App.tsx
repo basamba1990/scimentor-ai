@@ -1,41 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { supabase } from '@/lib/supabase'
 import { useAuth } from '@/hooks/useAuth'
+import { useEffect } from 'react'
 import { Home } from '@/pages/Home'
 import { Dashboard } from '@/pages/Dashboard'
 import type { User } from '@supabase/supabase-js'
 
 export function App() {
   const { user, loading } = useAuth()
-  const [loginUrl, setLoginUrl] = useState<string | null>(null)
-
-  useEffect(() => {
-    const getLoginUrl = async () => {
-      try {
-        const { data, error } = await supabase.auth.signInWithOAuth({
-          provider: 'google',
-          options: {
-            redirectTo: window.location.origin,
-          },
-        })
-        if (data?.url) {
-          setLoginUrl(data.url)
-        }
-      } catch (err) {
-        console.error('Failed to get login URL:', err)
-      }
-    }
-
-    if (!user && !loading) {
-      getLoginUrl()
-    }
-  }, [user, loading])
-
-  const handleLogin = () => {
-    if (loginUrl) {
-      window.location.href = loginUrl
-    }
-  }
 
   const handleLogout = async () => {
     await supabase.auth.signOut()
@@ -53,7 +25,7 @@ export function App() {
   }
 
   if (!user) {
-    return <Home onLogin={handleLogin} />
+    return <Home />
   }
 
   return <Dashboard user={user} onLogout={handleLogout} />
